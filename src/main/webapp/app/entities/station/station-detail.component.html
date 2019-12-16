@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="station">
+            <h2><span jhiTranslate="myStationApp.station.detail.title">Station</span> {{station.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="myStationApp.station.name">Name</span></dt>
+                <dd>
+                    <span>{{station.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="myStationApp.station.gasLevel">Gas Level</span></dt>
+                <dd>
+                    <span>{{station.gasLevel}}</span>
+                </dd>
+                <dt><span jhiTranslate="myStationApp.station.benzeneLevel">Benzene Level</span></dt>
+                <dd>
+                    <span>{{station.benzeneLevel}}</span>
+                </dd>
+                <dt><span jhiTranslate="myStationApp.station.lastTankFill">Last Tank Fill</span></dt>
+                <dd>
+                    <span>{{station.lastTankFill}}</span>
+                </dd>
+                <dt><span jhiTranslate="myStationApp.station.city">City</span></dt>
+                <dd>
+                    <span>{{station.city}}</span>
+                </dd>
+                <dt><span jhiTranslate="myStationApp.station.location">Location</span></dt>
+                <dd>
+                    <span>{{station.location}}</span>
+                </dd>
+                <dt><span jhiTranslate="myStationApp.station.mapUrl">Map Url</span></dt>
+                <dd>
+                    <span>{{station.mapUrl}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/station', station.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

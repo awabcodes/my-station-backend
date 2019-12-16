@@ -1,0 +1,130 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-station-heading" jhiTranslate="myStationApp.station.home.createOrEditLabel">Create or edit a Station</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myStationApp.station.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myStationApp.station.gasLevel" for="field_gasLevel">Gas Level</label>
+                    <input type="number" class="form-control" name="gasLevel" id="field_gasLevel"
+                           formControlName="gasLevel"/>
+                    <div *ngIf="editForm.get('gasLevel').invalid && (editForm.get('gasLevel').dirty || editForm.get('gasLevel').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gasLevel').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gasLevel').errors.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gasLevel').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 100 }">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('gasLevel')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myStationApp.station.benzeneLevel" for="field_benzeneLevel">Benzene Level</label>
+                    <input type="number" class="form-control" name="benzeneLevel" id="field_benzeneLevel"
+                           formControlName="benzeneLevel"/>
+                    <div *ngIf="editForm.get('benzeneLevel').invalid && (editForm.get('benzeneLevel').dirty || editForm.get('benzeneLevel').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('benzeneLevel').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('benzeneLevel').errors.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('benzeneLevel').errors.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 100 }">
+                            This field cannot be more than 100.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('benzeneLevel')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myStationApp.station.lastTankFill" for="field_lastTankFill">Last Tank Fill</label>
+                    <div class="d-flex">
+                        <input id="field_lastTankFill" type="datetime-local" class="form-control" name="lastTankFill" formControlName="lastTankFill" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('lastTankFill').invalid && (editForm.get('lastTankFill').dirty || editForm.get('lastTankFill').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastTankFill').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('lastTankFill').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myStationApp.station.city" for="field_city">City</label>
+                    <input type="text" class="form-control" name="city" id="field_city"
+                           formControlName="city"/>
+                    <div *ngIf="editForm.get('city').invalid && (editForm.get('city').dirty || editForm.get('city').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('city').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myStationApp.station.location" for="field_location">Location</label>
+                    <input type="text" class="form-control" name="location" id="field_location"
+                           formControlName="location"/>
+                    <div *ngIf="editForm.get('location').invalid && (editForm.get('location').dirty || editForm.get('location').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('location').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="myStationApp.station.mapUrl" for="field_mapUrl">Map Url</label>
+                    <input type="text" class="form-control" name="mapUrl" id="field_mapUrl"
+                           formControlName="mapUrl"/>
+                    <div *ngIf="editForm.get('mapUrl').invalid && (editForm.get('mapUrl').dirty || editForm.get('mapUrl').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('mapUrl').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

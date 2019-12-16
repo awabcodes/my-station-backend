@@ -1,0 +1,13 @@
+entity Station {
+    name String required
+    gasLevel Integer required min(0) max(100)
+    benzeneLevel Integer required min(0) max(100)
+    lastTankFill Instant required
+    city String required
+    location String required
+    mapUrl String required
+}
+
+service * with serviceClass
+paginate * with pagination
+filter *

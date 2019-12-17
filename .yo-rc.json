@@ -37,6 +37,8 @@
     "enableTranslation": true,
     "nativeLanguage": "en",
     "languages": ["en", "ar-ly"],
-    "blueprints": []
+    "blueprints": [],
+    "herokuAppName": "my-station",
+    "herokuDeployType": "git"
   }
 }

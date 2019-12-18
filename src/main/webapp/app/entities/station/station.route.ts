@@ -33,7 +33,7 @@ export const stationRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'myStationApp.station.home.title'
     },
@@ -46,7 +46,7 @@ export const stationRoute: Routes = [
       station: StationResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'myStationApp.station.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const stationRoute: Routes = [
       station: StationResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'myStationApp.station.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -70,7 +70,7 @@ export const stationRoute: Routes = [
       station: StationResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'myStationApp.station.home.title'
     },
     canActivate: [UserRouteAccessService]

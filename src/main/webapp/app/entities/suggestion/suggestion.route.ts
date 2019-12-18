@@ -33,7 +33,7 @@ export const suggestionRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'myStationApp.suggestion.home.title'
     },
@@ -46,7 +46,7 @@ export const suggestionRoute: Routes = [
       suggestion: SuggestionResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'myStationApp.suggestion.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -58,7 +58,7 @@ export const suggestionRoute: Routes = [
       suggestion: SuggestionResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'myStationApp.suggestion.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -70,7 +70,7 @@ export const suggestionRoute: Routes = [
       suggestion: SuggestionResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'myStationApp.suggestion.home.title'
     },
     canActivate: [UserRouteAccessService]

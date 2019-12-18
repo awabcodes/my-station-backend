@@ -6,6 +6,17 @@ entity Station {
     city String required
     location String required
     mapUrl String required
+    // User
+}
+
+entity Suggestion {
+    title String required
+    message String required
+    date LocalDate required
+}
+
+relationship OneToOne {
+    Station{user(login) required} to User
 }
 
 service * with serviceClass

@@ -22,7 +22,8 @@
       "lastTankFill": "Last Tank Fill",
       "city": "City",
       "location": "Location",
-      "mapUrl": "Map Url"
+      "mapUrl": "Map Url",
+      "user": "User"
     }
   }
 }

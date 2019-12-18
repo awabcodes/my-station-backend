@@ -2,27 +2,28 @@
   "myStationApp": {
     "station": {
       "home": {
-        "title": "المحطات",
-        "createLabel": "انشاء محطة جديده",
-        "createOrEditLabel": "انشاء او تعديل محطة",
-        "notFound": "لا يوجد محطات"
+        "title": "Stations",
+        "createLabel": "Create a new Station",
+        "createOrEditLabel": "Create or edit a Station",
+        "notFound": "No Stations found"
       },
-      "created": "تم إنشاء محطة جديدة مع معرف {{ param }}",
-      "updated": "تم تحديث محطة مع معرف {{ param }}",
-      "deleted": "يتم حذف محطة مع معرف {{ param }}",
+      "created": "A new Station is created with identifier {{ param }}",
+      "updated": "A Station is updated with identifier {{ param }}",
+      "deleted": "A Station is deleted with identifier {{ param }}",
       "delete": {
-        "question": "هل أنت متأكد أنك تريد حذف المحطة {{ id }}?"
+        "question": "Are you sure you want to delete Station {{ id }}?"
       },
       "detail": {
-        "title": "محطة"
+        "title": "Station"
       },
-      "name": "اسم",
-      "gasLevel": "مستوى الجاز",
-      "benzeneLevel": "مستوى البنزين",
-      "lastTankFill": "اخر تاريخ لملء خزان",
-      "city": "مدينة",
-      "location": "مكان",
-      "mapUrl": "رابط الخريطة"
+      "name": "Name",
+      "gasLevel": "Gas Level",
+      "benzeneLevel": "Benzene Level",
+      "lastTankFill": "Last Tank Fill",
+      "city": "City",
+      "location": "Location",
+      "mapUrl": "Map Url",
+      "user": "User"
     }
   }
 }

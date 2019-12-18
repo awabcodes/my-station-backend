@@ -33,6 +33,10 @@
                 <dd>
                     <span>{{station.mapUrl}}</span>
                 </dd>
+                <dt><span jhiTranslate="myStationApp.station.user">User</span></dt>
+                <dd>
+                    {{station.user?.login}}
+                </dd>
             </dl>
 
             <button type="submit"

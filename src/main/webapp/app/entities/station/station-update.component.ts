@@ -7,8 +7,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { JhiAlertService } from 'ng-jhipster';
 import { IStation, Station } from 'app/shared/model/station.model';
 import { StationService } from './station.service';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
   selector: 'jhi-station-update',
@@ -16,6 +19,8 @@ import { StationService } from './station.service';
 })
 export class StationUpdateComponent implements OnInit {
   isSaving: boolean;
+
+  users: IUser[];
 
   editForm = this.fb.group({
     id: [],
@@ -25,16 +30,26 @@ export class StationUpdateComponent implements OnInit {
     lastTankFill: [null, [Validators.required]],
     city: [null, [Validators.required]],
     location: [null, [Validators.required]],
-    mapUrl: [null, [Validators.required]]
+    mapUrl: [null, [Validators.required]],
+    user: [null, Validators.required]
   });
 
-  constructor(protected stationService: StationService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected jhiAlertService: JhiAlertService,
+    protected stationService: StationService,
+    protected userService: UserService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ station }) => {
       this.updateForm(station);
     });
+    this.userService
+      .query()
+      .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(station: IStation) {
@@ -46,7 +61,8 @@ export class StationUpdateComponent implements OnInit {
       lastTankFill: station.lastTankFill != null ? station.lastTankFill.format(DATE_TIME_FORMAT) : null,
       city: station.city,
       location: station.location,
-      mapUrl: station.mapUrl
+      mapUrl: station.mapUrl,
+      user: station.user
     });
   }
 
@@ -75,7 +91,8 @@ export class StationUpdateComponent implements OnInit {
         this.editForm.get(['lastTankFill']).value != null ? moment(this.editForm.get(['lastTankFill']).value, DATE_TIME_FORMAT) : undefined,
       city: this.editForm.get(['city']).value,
       location: this.editForm.get(['location']).value,
-      mapUrl: this.editForm.get(['mapUrl']).value
+      mapUrl: this.editForm.get(['mapUrl']).value,
+      user: this.editForm.get(['user']).value
     };
   }
 
@@ -90,5 +107,12 @@ export class StationUpdateComponent implements OnInit {
 
   protected onSaveError() {
     this.isSaving = false;
+  }
+  protected onError(errorMessage: string) {
+    this.jhiAlertService.error(errorMessage, null, null);
+  }
+
+  trackUserById(index: number, item: IUser) {
+    return item.id;
   }
 }

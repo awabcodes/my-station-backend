@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IUser } from 'app/core/user/user.model';
 
 export interface IStation {
   id?: number;
@@ -9,6 +10,7 @@ export interface IStation {
   city?: string;
   location?: string;
   mapUrl?: string;
+  user?: IUser;
 }
 
 export class Station implements IStation {
@@ -20,6 +22,7 @@ export class Station implements IStation {
     public lastTankFill?: Moment,
     public city?: string,
     public location?: string,
-    public mapUrl?: string
+    public mapUrl?: string,
+    public user?: IUser
   ) {}
 }

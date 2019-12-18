@@ -2,6 +2,7 @@ package com.awabcodes.mystation.web.rest;
 
 import com.awabcodes.mystation.MyStationApp;
 import com.awabcodes.mystation.domain.Station;
+import com.awabcodes.mystation.domain.User;
 import com.awabcodes.mystation.repository.StationRepository;
 import com.awabcodes.mystation.service.StationService;
 import com.awabcodes.mystation.web.rest.errors.ExceptionTranslator;
@@ -116,6 +117,11 @@ public class StationResourceIT {
             .city(DEFAULT_CITY)
             .location(DEFAULT_LOCATION)
             .mapUrl(DEFAULT_MAP_URL);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        station.setUser(user);
         return station;
     }
     /**
@@ -133,6 +139,11 @@ public class StationResourceIT {
             .city(UPDATED_CITY)
             .location(UPDATED_LOCATION)
             .mapUrl(UPDATED_MAP_URL);
+        // Add required entity
+        User user = UserResourceIT.createEntity(em);
+        em.persist(user);
+        em.flush();
+        station.setUser(user);
         return station;
     }
 
@@ -942,6 +953,22 @@ public class StationResourceIT {
 
         // Get all the stationList where mapUrl does not contain UPDATED_MAP_URL
         defaultStationShouldBeFound("mapUrl.doesNotContain=" + UPDATED_MAP_URL);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllStationsByUserIsEqualToSomething() throws Exception {
+        // Get already existing entity
+        User user = station.getUser();
+        stationRepository.saveAndFlush(station);
+        Long userId = user.getId();
+
+        // Get all the stationList where user equals to userId
+        defaultStationShouldBeFound("userId.equals=" + userId);
+
+        // Get all the stationList where user equals to userId + 1
+        defaultStationShouldNotBeFound("userId.equals=" + (userId + 1));
     }
 
     /**

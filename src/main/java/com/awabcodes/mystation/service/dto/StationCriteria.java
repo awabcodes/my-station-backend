@@ -41,6 +41,8 @@ public class StationCriteria implements Serializable, Criteria {
 
     private StringFilter mapUrl;
 
+    private LongFilter userId;
+
     public StationCriteria(){
     }
 
@@ -53,6 +55,7 @@ public class StationCriteria implements Serializable, Criteria {
         this.city = other.city == null ? null : other.city.copy();
         this.location = other.location == null ? null : other.location.copy();
         this.mapUrl = other.mapUrl == null ? null : other.mapUrl.copy();
+        this.userId = other.userId == null ? null : other.userId.copy();
     }
 
     @Override
@@ -124,6 +127,14 @@ public class StationCriteria implements Serializable, Criteria {
         this.mapUrl = mapUrl;
     }
 
+    public LongFilter getUserId() {
+        return userId;
+    }
+
+    public void setUserId(LongFilter userId) {
+        this.userId = userId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -142,7 +153,8 @@ public class StationCriteria implements Serializable, Criteria {
             Objects.equals(lastTankFill, that.lastTankFill) &&
             Objects.equals(city, that.city) &&
             Objects.equals(location, that.location) &&
-            Objects.equals(mapUrl, that.mapUrl);
+            Objects.equals(mapUrl, that.mapUrl) &&
+            Objects.equals(userId, that.userId);
     }
 
     @Override
@@ -155,7 +167,8 @@ public class StationCriteria implements Serializable, Criteria {
         lastTankFill,
         city,
         location,
-        mapUrl
+        mapUrl,
+        userId
         );
     }
 
@@ -170,6 +183,7 @@ public class StationCriteria implements Serializable, Criteria {
                 (city != null ? "city=" + city + ", " : "") +
                 (location != null ? "location=" + location + ", " : "") +
                 (mapUrl != null ? "mapUrl=" + mapUrl + ", " : "") +
+                (userId != null ? "userId=" + userId + ", " : "") +
             "}";
     }
 

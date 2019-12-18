@@ -26,6 +26,7 @@
             <th scope="col"  jhiSortBy="city"><span jhiTranslate="myStationApp.station.city">City</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="location"><span jhiTranslate="myStationApp.station.location">Location</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="mapUrl"><span jhiTranslate="myStationApp.station.mapUrl">Map Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="myStationApp.station.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -39,6 +40,9 @@
                 <td>{{station.city}}</td>
                 <td>{{station.location}}</td>
                 <td>{{station.mapUrl}}</td>
+                <td>
+                    {{station.user?.login}}
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

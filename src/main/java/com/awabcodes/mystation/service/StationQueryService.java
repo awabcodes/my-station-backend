@@ -106,6 +106,10 @@ public class StationQueryService extends QueryService<Station> {
             if (criteria.getMapUrl() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getMapUrl(), Station_.mapUrl));
             }
+            if (criteria.getUserId() != null) {
+                specification = specification.and(buildSpecification(criteria.getUserId(),
+                    root -> root.join(Station_.user, JoinType.LEFT).get(User_.id)));
+            }
         }
         return specification;
     }

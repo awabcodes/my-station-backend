@@ -110,6 +110,10 @@ public class StationQueryService extends QueryService<Station> {
                 specification = specification.and(buildSpecification(criteria.getUserId(),
                     root -> root.join(Station_.user, JoinType.LEFT).get(User_.id)));
             }
+            if (criteria.getReportId() != null) {
+                specification = specification.and(buildSpecification(criteria.getReportId(),
+                    root -> root.join(Station_.report, JoinType.LEFT).get(Report_.id)));
+            }
         }
         return specification;
     }

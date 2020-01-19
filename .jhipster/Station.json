@@ -68,6 +68,13 @@
             "relationshipName": "user",
             "otherEntityField": "login",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "report",
+            "otherEntityRelationshipName": "station",
+            "relationshipName": "report",
+            "ownerSide": false
         }
     ],
     "changelogDate": "20191216175916",

@@ -15,8 +15,16 @@ entity Suggestion {
     date LocalDate required
 }
 
+entity Report {
+    title String required
+    weeklyConsumption String required
+    monthlyConsumption String required
+    // Station
+}
+
 relationship OneToOne {
     Station{user(login) required} to User
+    Report{station(name) required} to Station{report(title)}
 }
 
 service * with serviceClass

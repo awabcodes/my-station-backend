@@ -1,4 +1,5 @@
 package com.awabcodes.mystation.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -58,6 +59,10 @@ public class Station implements Serializable {
     @NotNull
     @JoinColumn(unique = true)
     private User user;
+
+    @OneToOne(mappedBy = "station")
+    @JsonIgnore
+    private Report report;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -170,6 +175,19 @@ public class Station implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Report getReport() {
+        return report;
+    }
+
+    public Station report(Report report) {
+        this.report = report;
+        return this;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

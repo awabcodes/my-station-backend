@@ -12,6 +12,8 @@ import { IStation, Station } from 'app/shared/model/station.model';
 import { StationService } from './station.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { IReport } from 'app/shared/model/report.model';
+import { ReportService } from 'app/entities/report/report.service';
 
 @Component({
   selector: 'jhi-station-update',
@@ -21,6 +23,8 @@ export class StationUpdateComponent implements OnInit {
   isSaving: boolean;
 
   users: IUser[];
+
+  reports: IReport[];
 
   editForm = this.fb.group({
     id: [],
@@ -38,6 +42,7 @@ export class StationUpdateComponent implements OnInit {
     protected jhiAlertService: JhiAlertService,
     protected stationService: StationService,
     protected userService: UserService,
+    protected reportService: ReportService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -50,6 +55,9 @@ export class StationUpdateComponent implements OnInit {
     this.userService
       .query()
       .subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.reportService
+      .query()
+      .subscribe((res: HttpResponse<IReport[]>) => (this.reports = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(station: IStation) {
@@ -113,6 +121,10 @@ export class StationUpdateComponent implements OnInit {
   }
 
   trackUserById(index: number, item: IUser) {
+    return item.id;
+  }
+
+  trackReportById(index: number, item: IReport) {
     return item.id;
   }
 }

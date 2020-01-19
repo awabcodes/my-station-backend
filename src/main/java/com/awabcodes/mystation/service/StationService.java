@@ -10,7 +10,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /**
  * Service Implementation for managing {@link Station}.
@@ -50,6 +53,20 @@ public class StationService {
         return stationRepository.findAll(pageable);
     }
 
+
+
+    /**
+    *  Get all the stations where Report is {@code null}.
+     *  @return the list of entities.
+     */
+    @Transactional(readOnly = true) 
+    public List<Station> findAllWhereReportIsNull() {
+        log.debug("Request to get all stations where Report is null");
+        return StreamSupport
+            .stream(stationRepository.findAll().spliterator(), false)
+            .filter(station -> station.getReport() == null)
+            .collect(Collectors.toList());
+    }
 
     /**
      * Get one station by id.

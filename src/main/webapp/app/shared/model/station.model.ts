@@ -1,5 +1,6 @@
 import { Moment } from 'moment';
 import { IUser } from 'app/core/user/user.model';
+import { IReport } from 'app/shared/model/report.model';
 
 export interface IStation {
   id?: number;
@@ -11,6 +12,7 @@ export interface IStation {
   location?: string;
   mapUrl?: string;
   user?: IUser;
+  report?: IReport;
 }
 
 export class Station implements IStation {
@@ -23,6 +25,7 @@ export class Station implements IStation {
     public city?: string,
     public location?: string,
     public mapUrl?: string,
-    public user?: IUser
+    public user?: IUser,
+    public report?: IReport
   ) {}
 }
